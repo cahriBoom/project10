@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- =============================================================== -->
+    <!-- Project informations -->
+    <!-- =============================================================== -->
+    <!-- ===== Maven ===== -->
+    <groupId>com.rest.library</groupId>
+    <artifactId>library</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- ===== General information ===== -->
+	<name>Library</name>
+
+    <!-- ===== Organization ===== -->
+    <organization>
+        <name>cahriBoom</name>
+        <url>http://www.cahriBoom.com</url>
+    </organization>
+
+
+
+
+    <!-- =============================================================== -->
+    <!-- Distrubution management -->
+    <!-- =============================================================== -->
+    <distributionManagement>
+        <site>
+            <id>site</id>
+            <name>site-doc</name>
+            <url>file://${project.build.directory}/site-doc/</url>
+        </site>
+    </distributionManagement>
+
+
+
+    <!-- =============================================================== -->
+    <!-- Properties -->
+    <!-- =============================================================== -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.build.timestamp.format>dd/MM/yyyy</maven.build.timestamp.format>
+        <buildTime>${maven.build.timestamp}</buildTime>
+
+        <!-- ===== Application properties ===== -->
+        <application.name>library</application.name>
+
+        <!-- ===== Version properties ===== -->
+        <log4j.version>2.8.1</log4j.version>
+        <spring.version>4.3.17.RELEASE</spring.version>
+    </properties>
+
+    <!-- =============================================================== -->
+    <!-- Modules -->
+    <!-- =============================================================== -->
+    <modules>
+        <module>library-back</module>
+		<module>library-batch</module>
+		<module>library-front</module>
+    </modules>
+
+
+    <!-- =============================================================== -->
+    <!-- Profiles -->
+    <!-- =============================================================== -->
+	<profiles>
+	</profiles>
+
+    <!-- =============================================================== -->
+    <!-- Dependency managment -->
+    <!-- =============================================================== -->
+	<dependencyManagement>
+        <dependencies>
+		<!-- ========== Modules ========== -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>library-back</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>library-batch</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>library-front</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+		
+			
+		</dependecies>
+	<dependecyManagement>
+	
+    <!-- =============================================================== -->
+    <!-- Dependencies -->
+    <!-- =============================================================== -->
+    <dependencies>
+    </dependencies>
+
+</project>
