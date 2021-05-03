@@ -12,11 +12,11 @@ import com.rest.libraryFront.proxies.LibraryProxy;
 import com.rest.libraryFront.service.LivreService;
 
 @Service("livreService")
-public class LivreServiceImplementation implements LivreService{
+public class LivreServiceImplementation implements LivreService {
 
 	@Autowired
 	private LibraryProxy libraryProxy;
-	
+
 	@Override
 	public List<LivreBean> getLivres() {
 		return libraryProxy.getLivres();
@@ -29,18 +29,17 @@ public class LivreServiceImplementation implements LivreService{
 
 	@Override
 	public void ajouterLivres(LivreBean livre) {
-		libraryProxy.postAddlivres(livre);		
+		libraryProxy.postAddlivres(livre);
 	}
-	
-	
+
 	@Override
 	public LivreBean getById(int id) {
 		LivreBean livre = libraryProxy.getById(id);
 		List<ExemplaireBean> ex = new ArrayList<ExemplaireBean>();
 		List<ExemplaireBean> exemplaires = libraryProxy.getAllExemplaire();
-		for(ExemplaireBean e:exemplaires) {
+		for (ExemplaireBean e : exemplaires) {
 			int idE = e.getLivre().getId();
-			if(idE==id) {
+			if (idE == id) {
 				ex.add(e);
 			}
 		}
@@ -51,12 +50,18 @@ public class LivreServiceImplementation implements LivreService{
 	@Override
 	public ExemplaireBean getOneExemplaireDispo(LivreBean livre) {
 		List<ExemplaireBean> list = livre.getListe_exemplaire();
-		for(ExemplaireBean e:list) {
-			if(e.isDisponible()) {
+		for (ExemplaireBean e : list) {
+			if (e.isDisponible()) {
 				return e;
 			}
-		}		
+		}
 		return new ExemplaireBean();
+	}
+
+	@Override
+	public void reserverLivre(int id_livre, int id_client) {
+		libraryProxy.getReserverLivre(id_livre, id_client);
+
 	}
 
 }

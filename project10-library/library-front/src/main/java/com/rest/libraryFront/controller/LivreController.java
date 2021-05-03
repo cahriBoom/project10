@@ -72,6 +72,15 @@ public class LivreController {
 		LivreBean livre = livreService.getById(id);
 		ExemplaireBean exemplaire = livreService.getOneExemplaireDispo(livre);
 		
+		//Calcul du nombre d'exemplaire restant pour un livre donné en paramètre
+		List<ExemplaireBean> exemplaires = livre.getListe_exemplaire();
+		int nb_exemplaire_restant=0;
+		for(ExemplaireBean e: exemplaires) {
+			if(e.isDisponible()) {
+				nb_exemplaire_restant++;
+			}
+		}
+		
 		//Définition des dates
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		Date parution = livre.getParution();
@@ -89,6 +98,7 @@ public class LivreController {
 		model.addAttribute("debut",strDateDebut);
 		model.addAttribute("fin", strDateFin);
 		model.addAttribute("parution",strDateParu);
+		model.addAttribute("nb_exemplaire_restant", nb_exemplaire_restant);
 		model.addAttribute("exemplaire", exemplaire);
 		model.addAttribute("livre", livre);
 		model.addAttribute("client", client);
@@ -96,7 +106,31 @@ public class LivreController {
 		return "description";
 	}
 	
-			
+	@GetMapping(value="/reserver/{id}&{id_client}")
+	public String getReserver(Model model, @PathVariable("id") int id, @PathVariable("id_client") int client) {
+		LivreBean livre = livreService.getById(id);
+		
+		int nb_exemplaire = livre.getNb_exemplaire();
+		int max_reservation = nb_exemplaire * 2;
+		int size_liste_attente = 0;
+		if(livre.getListe_attente()!=null) {
+			size_liste_attente = livre.getListe_exemplaire().size();
+		}
+		
+		String message = "";
+		
+		if(size_liste_attente<max_reservation) {
+			livreService.reserverLivre(id, client);
+			message = "Vous avez réservé le livre avec succès";
+		}else {
+			message = "Le nombre maximale de réservation faites pour ce livre est atteinte. Réessayé plus tard";
+		}
+
+		model.addAttribute("message",message);
+		return "reserver";
+	}
+
+	
 	@GetMapping(value="/addlivres")
 	public String getAddLivres(Model model) {
 		model.addAttribute("livreBean", new LivreBean());

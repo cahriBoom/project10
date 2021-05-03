@@ -12,4 +12,5 @@ public interface LivreService {
 	List<LivreBean> getLivresByNom(String nom);
 	ExemplaireBean getOneExemplaireDispo(LivreBean livre);
 	void ajouterLivres(LivreBean livre);
+	void reserverLivre(int id_livre, int id_client);
 }
