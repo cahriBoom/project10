@@ -21,4 +21,10 @@ public interface BatchProxy {
 	@GetMapping(value="/emprunteurs/{id}")
 	ClientBean getEmprunteurByExemplaire(@PathVariable("id") int id);
 	
+	
+	@GetMapping(value="/returnBookVerification/{id}")
+	void getReturnBookVerification(@PathVariable("id")int id) ;
+	
+	@GetMapping(value="/rendreLivre")
+	List<ExemplaireBean> getAllExemplairesRendu();
 }

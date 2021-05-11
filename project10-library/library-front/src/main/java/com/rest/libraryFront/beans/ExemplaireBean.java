@@ -1,4 +1,4 @@
-package com.rest.libraryBatch.beans;
+package com.rest.libraryFront.beans;
 
 import java.util.Date;
 
@@ -9,6 +9,8 @@ public class ExemplaireBean {
 	private int id;
 
 	private LivreBean livre;
+
+	private boolean disponible;
 
 	private String etat;
 
@@ -23,12 +25,13 @@ public class ExemplaireBean {
 	private boolean prolonge;
 
 	public ExemplaireBean() {
-		this(0, new ClientBean());
+		this(0, new ClientBean(), "Disponible");
 	}
 
-	public ExemplaireBean(int id, ClientBean client) {
+	public ExemplaireBean(int id, ClientBean client, String etat) {
 		this.id = id;
 		this.emprunteur = client;
+		this.etat = etat;
 	}
 
 	public int getId() {
@@ -37,14 +40,6 @@ public class ExemplaireBean {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public LivreBean getLivre() {
-		return livre;
-	}
-
-	public void setLivre(LivreBean livre) {
-		this.livre = livre;
 	}
 
 	public Date getDebut() {
@@ -77,6 +72,22 @@ public class ExemplaireBean {
 
 	public void setProlonge(boolean prolonge) {
 		this.prolonge = prolonge;
+	}
+
+	public LivreBean getLivre() {
+		return livre;
+	}
+
+	public void setLivre(LivreBean livre) {
+		this.livre = livre;
+	}
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
 
 	public String getEtat() {
