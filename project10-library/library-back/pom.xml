@@ -2,50 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<!-- =============================================================== -->
-    <!-- Project informations -->
-    <!-- =============================================================== -->
-    <!-- ===== Parent ===== -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.0</version>
-		<relativePath>..</relativePath><relativePath>..</relativePath>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	
-	<!-- ===== Maven ===== -->
-	<artifactId>library-back</artifactId>
-	
-	<!-- ===== General Information ===== -->
-	<name>${project.artifactId}</name>
 	<groupId>com.rest</groupId>
+	<artifactId>libraryBack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	
-	
-	<!-- =============================================================== -->
-    <!-- Distrubution management -->
-    <!-- =============================================================== -->
-	 <distributionManagement>
-        <site>
-            <id>site</id>
-            <name>site-doc</name>
-            <url>file://${basedir}/../target/site-doc/${project.artifactId}/</url>
-        </site>
-    </distributionManagement>
+	<name>libraryBack</name>
+	<description>Demo project for Spring Boot</description>
 
-
-    <!-- =============================================================== -->
-    <!-- Properties -->
-    <!-- =============================================================== -->
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 
-    <!-- =============================================================== -->
-    <!-- Dependencies -->
-    <!-- =============================================================== -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -123,18 +96,7 @@
 			<artifactId>spring-boot-starter-json</artifactId>
 		</dependency>
 	</dependencies>
-	
-	
-	<!-- =============================================================== -->
-    <!-- Profiles -->
-    <!-- =============================================================== -->
-	<profiles>
-	</profiles>
-	
-	
-    <!-- =============================================================== -->
-    <!-- Build -->
-    <!-- =============================================================== -->
+
 	<build>
 		<plugins>
 			<plugin>
